@@ -7,7 +7,7 @@ Admin.init({
   admin_id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
-    primaryKey: true,
+    primaryKey: true
   },
   admin_firstname: {
     type: DataTypes.STRING(7),

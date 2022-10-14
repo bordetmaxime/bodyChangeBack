@@ -1,18 +1,23 @@
 function trainingView(training) {
     
     return {
-      id: admin.admin_id,
-      firstname: admin.admin_firstname,
-      lastname: admin.admin_lastname,
-      email: admin.admin_email,
-      password: admin.admin_password,
-      createdAt: admin.admin_created_at,
-      updatedAt: admin.admin_updated_at,
+      id: training.training_id,
+      image: training.training_img,
+      repetition: training.training_repetition,
+      serie: training.training_serie,
+      user_id: training.training_user_id,
+      createdAt: training.training_created_at,
+      updatedAt: training.training_updated_at,
   
     };
+  }
+
+  function trainingsView(trainings) {
+    return trainings.map((training) => (training));
   }
   
     
     module.exports = { 
-      adminView,
+      trainingView,
+      trainingsView
     };

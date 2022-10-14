@@ -4,6 +4,26 @@ const { adminView} = require('../dataviews/adminView');
 
 const adminController = {
 
+  getUser : async (req,res,next) => {
+   try{
+const email = req.body.email;
+const password = req.body.password;
+
+adminSearch = await Admin.findOne({where : {admin_email: email} && {admin_password: password}})
+
+if (adminSearch){
+  res.json(adminSearch)
+}
+
+
+else {
+  res.status(404).send(`Cant find list with id ${adminId}`);
+}
+} catch (err) {
+next(err);
+}},
+
+
     getOneAdmin: async (req, res, next) => {
     try{
         const adminId = req.params.id;
@@ -22,40 +42,20 @@ const adminController = {
       
     createOrModify: async (req, res, next) => {
         try {
-            const {firstname, lastname, email, password} = req.body;
-            const bodyErrors = checkAdminBodyError(req.body);
-            if (bodyErrors.length) {
-              res.status(400).json(bodyErrors);
-              return;
-            }
-
-        const adminId = req.params.id;
-        let admin;
-        if (adminId) { 
-          admin = await Admin.findByPk(adminId);
-          if (admin) {
-       
-            admin.admin_firstname = firstname;
-            admin.admin_lastname = lastname;
-            admin.admin_email = email;
-            admin.admin_password = password;
-          }
-        }
-  
-        if (!admin) { 
-        admin = Admin.build({
-            admin_firstname: firstname,
-            admin_lastname: lastname,
-            admin_email: email,
-            admin_password: password,
+             
+        const newadmin = Admin.build({
+            admin_firstname: req.body.firstname,
+            admin_lastname: req.body.lastname,
+            admin_email: req.body.email,
+            admin_password: req.body.password,
           });
-        }
   
-        await admin.save();
   
-        const cleanedAsmin = adminView(admin);
-        res.json(cleanedAdmin);
-    
+        await newadmin.save();
+
+        res.json("okey");
+      
+   
       } catch (err) {
         next(err);
       }
@@ -71,13 +71,7 @@ const adminController = {
               return;
             }
       
-            const {firstname, lastname, email, password} = req.body;
-            const bodyErrors = checkAdminBodyError(req.body, false);
-            if (bodyErrors.length) {
-              res.status(400).json(bodyErrors);
-              return;
-            }
-      
+            const {firstname, lastname, email, password} = req.body;    
         
             if (firstname) {
               admin.admin_firstname = firstname;

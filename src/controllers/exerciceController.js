@@ -22,7 +22,7 @@ const exerciceController = {
             const exerciceId = req.params.id;
             const exercice = await Machine_and_exo.findByPk(exerciceId)          
             if (exercice) {
-              const cleanedExercice = machineView(exercice);
+              const cleanedExercice = machine_and_exo_view(exercice);
               res.json(cleanedExercice);
             } else {
               res.status(404).send(`Cant find list with id ${exerciceId}`);
@@ -33,7 +33,7 @@ const exerciceController = {
         },
 
 
-                            };  
+                            }  
 
     
     

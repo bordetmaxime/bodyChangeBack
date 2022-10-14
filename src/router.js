@@ -15,13 +15,13 @@ router.get('/', (req, res) => {
 /* Admin */
 router.get('/admin/:id', adminController.getOneAdmin);
 router.post('/admin', adminController.createOrModify);
-router.put('/admin/:id?', adminController.createOrModify);
+router.post('/admin/user', adminController.getUser);
 router.patch('/admin/:id', adminController.updateAdmin);
 router.delete('/admin/:id', adminController.deleteAdmin);
 
 /* training */
-router.get('/training', trainingController.getAllTraining);
-router.post('/training/:id', trainingController.createOrModify);
+router.get('/training/:id', trainingController.getAllTraining);
+router.post('/training', trainingController.createOrModify);
 router.put('/training/:id', trainingController.createOrModify);
 router.patch('/training/:id', trainingController.updateTraining);
 router.delete('/training/:id', trainingController.deleteTraining);
