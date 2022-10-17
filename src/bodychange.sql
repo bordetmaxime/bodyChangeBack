@@ -30,21 +30,5 @@ CREATE TABLE "training" (
     "training_updated_at" TIMESTAMPTZ
 );
 
-INSERT INTO "admin" ("admin_id","admin_firstname","admin_lastname", "admin_email", "admin_password") VALUES 
-(1, 'Brandon', 'salvati', 'brandon.salvati@gmail.com', '12345'),
-(6, 'Jessica', 'cortona', 'cortona.jessica@gmail.com', '123456');
-
-INSERT INTO "machine_and_exo" ("machine_and_exo_id","machine_name", "exo_img") VALUES 
-(1, 'developpé couché', 'developpe_1.gif'),
-(2, 'developpé couché', 'developpe_2.gif'),
-(3, 'Machine guidée', 'guide_1.gif');
-
-
-INSERT INTO "training" ("training_id","training_img", "training_repetition", "training_serie", "training_user_id") VALUES 
-(1, 'developpe_1.gif', 12, 4, 1 ),
-(2, 'guide_1.gif', 8, 4, 1 );
-
-
-
 
 COMMIT;
