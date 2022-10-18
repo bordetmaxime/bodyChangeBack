@@ -1,7 +1,6 @@
 const express = require('express');
 const adminController = require('./controllers/adminController');
 const trainingController = require('./controllers/trainingController');
-const exerciceController = require('./controllers/exerciceController');
 const router = express.Router();
 
 /**
@@ -22,7 +21,7 @@ router.get('/training/:id', trainingController.getAllTraining);
 router.post('/training', trainingController.createOrModify);
 router.delete('/training/:id', trainingController.deleteTraining);
 
-=
+
 
 /**
  * ERROR
