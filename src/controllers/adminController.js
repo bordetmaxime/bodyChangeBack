@@ -6,10 +6,10 @@ const bcrypt = require('bcrypt');
 
 const adminController = {
 
-  getUser : async (req,res,next) => {
-   try{
-const email = req.body.email;
-const password = req.body.password;
+  getUser : async (req,res) => {
+  
+email = req.body.email;
+password = req.body.password;
 
 adminSearch = await Admin.findOne({where : {admin_email: email}})
 
@@ -23,9 +23,7 @@ if (adminSearch){
 else {
   res.status(404).send(`Cant find list with id ${adminId}`);
 }
-} catch (err) {
-next(err);
-}},
+},
 
 
 
