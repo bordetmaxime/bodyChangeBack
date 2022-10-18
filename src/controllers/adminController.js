@@ -10,14 +10,12 @@ const adminController = {
   
 email = req.body.email;
 password = req.body.password;
-
 adminSearch = await Admin.findOne({where : {admin_email: email}})
+goodPassword = await bcrypt.compare(password, adminSearch.admin_password);
 
-if (adminSearch){
-  goodPassword = await bcrypt.compare(password, adminSearch.admin_password);
   if(goodPassword){
   res.json(adminSearch)}
-}
+
 
 
 else {
