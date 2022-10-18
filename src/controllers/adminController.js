@@ -14,7 +14,8 @@ const password = req.body.password;
 adminSearch = await Admin.findOne({where : {admin_email: email}})
 
 if (adminSearch){
-  const goodPassword = await bcrypt.compare(password, adminSearch.admin_password);
+  
+  goodPassword = await bcrypt.compare(password, adminSearch.admin_password);
   if(goodPassword){
   res.json(adminSearch)}
 }
@@ -33,7 +34,7 @@ next(err);
     createOrModify: async (req, res, next) => {
         try {
 
-          const hashPassword = await bcrypt.hash(req.body.password, 10);
+          const hashPassword = await bcrypt.hash(req.body.password);
              
         const newadmin = Admin.build({
             admin_firstname: req.body.firstname,
