@@ -877,33 +877,7 @@ const trainingController = {
         },
          
 
-    updateTraining: async (req, res, next) => {
-     
-        try {
-            const {image, repetition, serie } = req.body;
-            const bodyErrors = checkTrainingBodyError(req.body);
-            if (bodyErrors.length) {
-              res.status(400).json(bodyErrors);
-              return;
-            }
-            if (image) {
-              training.training_image = image;
-            }
-            if (repetition) {
-                training.training_repetition = repetition;
-            }
-            if (serie) {
-                training.training_serie = serie;
-            }
-
-      
-                
-            const cleanedtraining = trainingView(training);
-            res.json(cleanedtraining);
-          } catch (err) {
-            next(err);
-          }
-                              },
+    
 
     deleteTraining: async (req, res, next) => {
         try {
